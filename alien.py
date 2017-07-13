@@ -11,6 +11,18 @@ class Alien(Sprite):
 		self.rect.y=self.rect.height
 		self.x=float(self.rect.x)
 
+	def check_edges(self):
+		scree_rect=self.scree.get_rect()
+		if self.rect.right>=scree_rect.right:
+			return True
+		elif self.rect.left<=0:
+			return True
+
+	def update(self):
+		self.x+=(self.ai_setting.alien_speed*self.ai_setting.fleet_direction)
+		self.rect.x=self.x
+		pass
+
 	def bitme(self):
 		self.scree.blit(self.image,self.rect)
 		
